@@ -104,7 +104,7 @@ class Game {
                            'Allow-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
                            'Allow-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
                            'Content-Type': 'application/json',
-                           'Authorization': `Bearer ${import.meta.env.VITE_Chat_key}`
+                           'Authorization': `Bearer ${import.meta.env.VITE_CHAT_KEY}`
                         },
                       body: JSON.stringify(requestBody),
                   })
