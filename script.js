@@ -58,7 +58,7 @@ class Game {
                    e.preventDefault();
                }
 
-               console.log(import.meta.env.VITE_Chat_key);
+               console.log(import.meta.env.VITE_CHAT_KEY);
 
                const InputValue =  this.elementDecisiontInput.value
 
@@ -104,7 +104,7 @@ class Game {
                            'Allow-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
                            'Allow-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
                            'Content-Type': 'application/json',
-                           'Authorization': `Bearer ${import.meta.env.VITE_Chat_key}`
+                           'Authorization': `Bearer ${import.meta.env.VITE_CHAT_KEY}`
                         },
                       body: JSON.stringify(requestBody),
                   })
@@ -194,7 +194,7 @@ class Game {
               return rockUrl
           }
 
-          let url = `https://api.unsplash.com/search/photos?query=${word}&page=1&per_page=10&client_id=${import.meta.env.VITE_photo_key}`;
+          let url = `https://api.unsplash.com/search/photos?query=${word}&page=1&per_page=10&client_id=${import.meta.env.VITE_PHOTO_KEY}`;
 
           let response = await fetch(url);
 
