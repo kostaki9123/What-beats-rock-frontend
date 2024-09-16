@@ -58,7 +58,7 @@ class Game {
                    e.preventDefault();
                }
 
-               console.log(import.meta.env.VITE_Chat_key);
+               console.log(import.meta.env.VITE_CHAT_KEY);
 
                const InputValue =  this.elementDecisiontInput.value
 
@@ -194,7 +194,7 @@ class Game {
               return rockUrl
           }
 
-          let url = `https://api.unsplash.com/search/photos?query=${word}&page=1&per_page=10&client_id=${import.meta.env.VITE_photo_key}`;
+          let url = `https://api.unsplash.com/search/photos?query=${word}&page=1&per_page=10&client_id=${import.meta.env.VITE_PHOTO_KEY}`;
 
           let response = await fetch(url);
 
