@@ -37,9 +37,9 @@ class Game {
              // All click events
             
           this.elementDecisionBtn.addEventListener("click", (e) => this.fetchData(e));
-
+   
           this.resultBtn.addEventListener("click", (e) => this.nextlevel(e));
-
+ 
           this.NgtresultBtn.addEventListener("click", (e) => this.restartGame(e))
            
           this.score = 0
@@ -58,7 +58,7 @@ class Game {
                    e.preventDefault();
                }
 
-               console.log(import.meta.env.VITE_CHAT_KEY);
+           
 
                const InputValue =  this.elementDecisiontInput.value
 
@@ -77,56 +77,28 @@ class Game {
                this.loader.style.display = "flex"; 
 
                
-               const url = 'https://api.openai.com/v1/chat/completions';
+               const url = 'http://localhost:3001/chatgpt';
 
                this.current = InputValue
 
-               let phrase =  `Tell me if the current word beats previous one and why(be funny and realist),and each element photo url
-                respone like api respone shcema 
-                  previous : ${this.previous},
-                  previousPhotoUrl :    ,
-                  current : ${InputValue} ,
-                  curentPhotoCurrent :   ,
-                  why :  
-                  beats(true or false) : `
-
-
-               const requestBody = {
-                 model: 'gpt-3.5-turbo',
-                 messages: [{ role: 'user', content: phrase }],
-               };
-               
-               const response = await fetch(url , 
-                  {
-                      method: 'POST',
-                      headers: { 
-                           'Allow-Control-Allow-Origin': '*',
-                           'Allow-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-                           'Allow-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
-                           'Content-Type': 'application/json',
-                           'Authorization': `Bearer ${import.meta.env.VITE_CHAT_KEY}`
-                        },
-                      body: JSON.stringify(requestBody),
-                  })
+               const response = await fetch(url)
  
                const data = await response.json();
                 
-               console.log("Res:" , data.choices[0].message.content);
+               console.log("Res chatgpt from backend:" ,data);
              //  console.log(data.choices[0].message.content);
 
                //loaging stop
                this.loader.style.display = "none"; 
             
-               this.fetchPhoto("dog")
                //trasform respanse message from string to object
-               let parsedObject = JSON.parse(data.choices[0].message.content);
 
                //selecting each element from the object 
-               let previous = parsedObject.previous;         ;
-               let current = parsedObject.current;
+               let previous = data.previous;         ;
+               let current = data.current;
 
-               let beats = parsedObject.beats;
-               let why = parsedObject.why;
+               let beats = data.beats;
+               let why = data.why;
 
               
                if (beats === true) {
@@ -194,13 +166,13 @@ class Game {
               return rockUrl
           }
 
-          let url = `https://api.unsplash.com/search/photos?query=${word}&page=1&per_page=10&client_id=${import.meta.env.VITE_PHOTO_KEY}`;
+          let url = `http://localhost:3001/photoUrl`;
 
           let response = await fetch(url);
 
           let data = await response.json();
 
-          console.log(data.results[0].urls.small)
+          console.log("photoUrl from backend:" , data)
 
           return data.results[0].urls.small
       }
