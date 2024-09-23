@@ -75,9 +75,8 @@ class Game {
 
                this.elementDecision.style.display = "none";
                this.loader.style.display = "flex"; 
-
                
-               const url = `http://localhost:3001/chatgpt/?previous=${this.previous}&current=${InputValue}`;
+               const url = `https://what-beats-rock-backend.onrender.com/chatgpt/?previous=${this.previous}&current=${InputValue}`;
 
                this.current = InputValue
 
@@ -162,11 +161,12 @@ class Game {
       async fetchPhoto(word){
 
           if(word.toLocaleLowerCase() === "rock"){
+            
               let rockUrl =  "https://symbl-world.akamaized.net/i/webp/f2/0e29d778af528ff18585b3c4088835.webp"
               return rockUrl
           }
 
-          let url = `http://localhost:3001/photoUrl/?word=${word}`;
+          let url = `https://what-beats-rock-backend.onrender.com/photoUrl/?word=${word}`;
 
           let response = await fetch(url,)
           
