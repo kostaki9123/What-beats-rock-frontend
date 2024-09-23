@@ -77,7 +77,7 @@ class Game {
                this.loader.style.display = "flex"; 
 
                
-               const url = 'http://localhost:3001/chatgpt';
+               const url = `http://localhost:3001/chatgpt/?previous=${this.previous}&current=${InputValue}`;
 
                this.current = InputValue
 
@@ -166,15 +166,19 @@ class Game {
               return rockUrl
           }
 
-          let url = `http://localhost:3001/photoUrl`;
+          let url = `http://localhost:3001/photoUrl/?word=${word}`;
 
-          let response = await fetch(url);
+          let response = await fetch(url,)
+          
 
           let data = await response.json();
+          
+          if (!data.ok){
+            console.log(data) }
 
           console.log("photoUrl from backend:" , data)
 
-          return data.results[0].urls.small
+          return data
       }
        
 
