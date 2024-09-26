@@ -152,7 +152,7 @@ class Game {
             this.elementDecisiontInput.value = "" 
             this.elementDecisionElementText.innerHTML = "Rock"
             this.elementDecisionScoreNumber.innerHTML = this.score
-            this.elementDecisionImage.src = ''
+            this.elementDecisionImage.src = "https://symbl-world.akamaized.net/i/webp/f2/0e29d778af528ff18585b3c4088835.webp"
         }
         
 
