@@ -59,7 +59,6 @@ class Game {
                }
 
            
-
                const InputValue =  this.elementDecisiontInput.value
 
                if (InputValue === "") {  
@@ -147,6 +146,7 @@ class Game {
         restartGame(e){
             e.preventDefault();
             this.score = 0;
+            this.previous = "Rock"
             this.NgtResult.style.display = "none";
             this.elementDecision.style.display = "flex";
             this.elementDecisiontInput.value = "" 
